@@ -1,0 +1,133 @@
+/* logo in the navbar */
+.logo {
+  width: 60px;
+}
+
+.bgImg {
+  /* The image used */
+  background-image: url("/image/bitcoinBg-img.png");
+  min-height: 550px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header{
+  font-family: 'Gugi', cursive;
+}
+
+.cardCrypto {
+  background-color: rgb(255, 184, 52);
+  margin-top: 3px;
+}
+
+.coinInfo {
+  background-image: url("/image/BlueBTCWallpaper.jpeg");
+  background-size: cover;
+  margin-top: 3px;
+  min-height: 180px;
+  height: auto;
+  width: auto;
+}
+
+/* about.html */
+.aboutCrypto {
+  background-color: rgb(255, 184, 52);
+}
+
+.pAbout {
+ text-align: center;
+}
+
+#aboutH1 {
+  font-size: 50px;
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Gugi', cursive;
+  font-weight: bold;
+  color: #000;
+}
+
+.imgAbout {
+  width: 200px;
+  padding-bottom: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Live report */
+#chartContainer{
+  width: 100%;
+  height: 100%;
+}
+/* Live report End*/
+
+/* Toggle Style */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #0d1142;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #0d1142;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
