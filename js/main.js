@@ -32,7 +32,7 @@ function cards() {
       checked = "checked";
     }
     myCards += ` 
-            <div class="card text-white m-3 col-6 cardCrypto notClicked" style="max-width: 12rem;">
+            <div class="card text-white m-3 col-6 cardCrypto" style="max-width: 12rem;">
                 <div class="card-header text-dark d-flex justify-content-between">
                     <h6>${card[i].symbol}</h6>
                     <label class="switch switched">
@@ -164,8 +164,6 @@ function toggleCoin(el, symbol) {
     selectedCoins.push(symbol);
   }
   selectCoin(selectedCoins);
-
-  console.log("selectedCoins", selectedCoins);
 }
 function onSave() {
   if (lastCoinSelected && selectedCoins.length < 5) {
@@ -182,7 +180,6 @@ const createChart = () => {
       ","
     )}&tsyms=USD,EUR$api_key=767fcb4fa4f239d141bbc774069cb70c14971ad503b4f2e3f6c416ec37ed38b1`,
     success: (response) => {
-      console.log(response);
       let chartData = [];
       for (let allkeys in response) {
         chartsData[allkeys] = {
@@ -219,7 +216,6 @@ const createChart = () => {
       chartsInterval = setInterval(() => {
         updateChart();
       }, 2000);
-      console.log("response", response);
     },
   });
 };
