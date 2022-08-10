@@ -2,8 +2,8 @@ function selectCoin(selectCoin) {
   localStorage.setItem("Coins", JSON.stringify(selectCoin));
 }
 
-function localStorageCoins(){
-  return JSON.parse(localStorage.getItem("Coins")) || []; 
+function localStorageCoins() {
+  return JSON.parse(localStorage.getItem("Coins")) || [];
 }
 
 const selectedCoins = localStorageCoins();
@@ -13,7 +13,7 @@ let chartsData = {};
 let chart;
 
 $(function () {
-
+  loadingPage();
   // take coin's api
   $.ajax({
     url: "https://api.coingecko.com/api/v3/coins",
@@ -63,15 +63,18 @@ function cards() {
                 </div>`;
     $(".cards").html(myCards);
   }
+  loadingPage("done");
   //End card of coins and the collapse button
 }
 
 // Search bar Start
 $(".searchSub").click(function (e) {
+  loadingPage();
   if ($("#myInput").val() != "") {
     $(".cards").empty();
   } else {
     alert("Put coin name!");
+    loadingPage("done");
   }
   showCoinDetails();
   e.preventDefault();
@@ -85,6 +88,7 @@ function showCoinDetails() {
     },
     error: (err) => {
       alert("The coin name that you enter is not valid");
+      loadingPage("done");
     },
   });
 }
@@ -120,20 +124,25 @@ function takeData(coin) {
                 </div>
             </div>`;
   $(".cards").append(cardCoin);
+  loadingPage("done");
 }
 // Search bar End
 
 // Bring Page From About.html
 $(".about").click(function () {
+  loadingPage();
   $("#htmlTemplate").empty();
   $("#htmlTemplate").load("About.html");
+  loadingPage("done");
 });
 
 // Bring Page From LiveReports.html
 $(".liveReports").click(function () {
+  loadingPage();
   $("#htmlTemplate").empty();
   $("#htmlTemplate").load("LiveReports.html");
   createChart();
+  loadingPage("done");
 });
 
 function toggleCoin(el, symbol) {
@@ -176,6 +185,15 @@ function onSave() {
     cards();
   }
 }
+
+function loadingPage(loadSlow) {
+  loadSlow
+    ? $(".screen").fadeOut(2000)
+    : $("body").append(
+      '<div class="screen"><div class="loadimg-screens"><img src="../image/load.gif" class="loadimg-screen" alt=""></div></div>'
+    );
+}
+
 
 // LiveReports
 const createChart = () => {
