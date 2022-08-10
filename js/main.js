@@ -2,7 +2,11 @@ function selectCoin(selectCoin) {
   localStorage.setItem("Coins", JSON.stringify(selectCoin));
 }
 
-const selectedCoins = JSON.parse(localStorage.getItem("Coins"));
+function localStorageCoins(){
+  return JSON.parse(localStorage.getItem("Coins")) || []; 
+}
+
+const selectedCoins = localStorageCoins();
 let myData = [];
 let lastCoinSelected = "";
 let chartsData = {};
@@ -196,7 +200,7 @@ const createChart = () => {
         animationEnabled: true,
         theme: "light2",
         title: {
-          text: "Live Reports: 2022 - 2023",
+          text: "Live Reports",
         },
         axisY: {
           includeZero: false,
@@ -219,6 +223,7 @@ const createChart = () => {
     },
   });
 };
+
 function updateChart() {
   $.ajax({
     url: `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${selectedCoins.join(
