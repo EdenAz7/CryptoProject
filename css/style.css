@@ -3,12 +3,11 @@
   width: 60px;
 }
 
+/* Parallax scrolling */
 .bgImg {
-  /* The image used */
+
   background-image: url("/image/bitcoinBg-img.png");
   min-height: 550px;
-
-  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
