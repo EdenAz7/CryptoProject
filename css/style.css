@@ -6,7 +6,7 @@
 /* Parallax scrolling */
 .bgImg {
 
-  background-image: url("/image/bitcoinBg-img.png");
+  background-image: url("../image/background.png");
   min-height: 550px;
   background-attachment: fixed;
   background-position: center;
@@ -24,7 +24,7 @@
 }
 
 .coinInfo {
-  background-image: url("/image/BlueBTCWallpaper.jpeg");
+  background-image: url("../image/BlueBTCWallpaper.jpeg");
   background-size: cover;
   margin-top: 3px;
   min-height: 180px;
