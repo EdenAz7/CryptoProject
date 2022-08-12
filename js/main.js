@@ -68,28 +68,45 @@ function cards() {
 }
 
 // Search bar Start
-$(".searchSub").click(function (e) {
+$(".searchSub").click((e) => {
   loadingPage();
+  e.preventDefault();
   if ($("#myInput").val() != "") {
     $(".cards").empty();
+    showCoinDetails();
   } else {
     alert("Put coin name!");
     loadingPage("done");
   }
-  showCoinDetails();
-  e.preventDefault();
 });
+
+
 function showCoinDetails() {
   const textCoin = $("#myInput").val();
   $.ajax({
-    url: `https://api.coingecko.com/api/v3/coins/${textCoin}`,
-    success: (coin) => {
-      takeData(coin);
+    // search with symbol or id for example BTC/bitcoin
+    url: `https://api.coingecko.com/api/v3/search?query=${textCoin}`,
+    success: (response) => {
+      if (response.coins.length == 0) {
+        alert("The coin name that you enter is not valid");
+        loadingPage("done");
+        return;
+      }
+      $.ajax({
+        url: `https://api.coingecko.com/api/v3/coins/${response.coins[0].id}`,
+        success: (coin) => {
+          takeData(coin);
+        },
+        error: () => {
+          alert("The coin name that you enter is not valid");
+          loadingPage("done");
+        },
+      });
     },
-    error: (err) => {
+    error: () => {
       alert("The coin name that you enter is not valid");
       loadingPage("done");
-    },
+    }
   });
 }
 function takeData(coin) {
@@ -129,7 +146,7 @@ function takeData(coin) {
 // Search bar End
 
 // Bring Page From About.html
-$(".about").click(function () {
+$(".about").click(() => {
   loadingPage();
   $("#htmlTemplate").empty();
   $("#htmlTemplate").load("../html/About.html");
@@ -137,7 +154,7 @@ $(".about").click(function () {
 });
 
 // Bring Page From LiveReports.html
-$(".liveReports").click(function () {
+$(".liveReports").click(() => {
   loadingPage();
   $("#htmlTemplate").empty();
   $("#htmlTemplate").load("../html/LiveReports.html");
@@ -247,7 +264,7 @@ function updateChart() {
     url: `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${selectedCoins.join(
       ","
     )}&tsyms=USD,EUR$api_key=7e922d3370e168a25844d768a1b5b3d5c7bad849d97774550b53f87db5528093`,
-    success: function (response) {
+    success: (response) => {
       let i = 0;
       for (let key in response) {
         const currCoin = response[key];
