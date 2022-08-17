@@ -1,9 +1,13 @@
+// Local Storage
 function selectCoin(selectCoin) {
   localStorage.setItem("Coins", JSON.stringify(selectCoin));
 }
 
 function localStorageCoins() {
   return JSON.parse(localStorage.getItem("Coins")) || [];
+  //if i share my project on another PC I need to reset the selectCoins. 
+  //thats why I did the || -> JSON.parse(localStorage.getItem("Coins")) or []
+  //and now automatically reset the local storage.
 }
 
 const selectedCoins = localStorageCoins();
@@ -13,7 +17,7 @@ let chartsData = {};
 let chart;
 
 $(function () {
-  loadingPage();
+  loadingPage(); //loading start
   // take coin's api
   $.ajax({
     url: "https://api.coingecko.com/api/v3/coins",
@@ -23,6 +27,7 @@ $(function () {
     },
     error: (err) => {
       alert(err.message);
+      loadingPage("done"); //loading end
     },
   });
 });
@@ -63,19 +68,19 @@ function cards() {
                 </div>`;
     $(".cards").html(myCards);
   }
-  loadingPage("done");
+  loadingPage("done"); //loading end
 }
 
 // Search bar Start
 $(".searchSub").click((e) => {
-  loadingPage();
+  loadingPage(); //loading start
   e.preventDefault();
   if ($("#myInput").val() != "") {
     $(".cards").empty();
     showCoinDetails();
   } else {
     alert("Put coin name!");
-    loadingPage("done");
+    loadingPage("done"); //loading end
   }
 });
 
@@ -87,7 +92,7 @@ function showCoinDetails() {
     success: (response) => {
       if (response.coins.length == 0) {
         alert("The coin name that you enter is not valid");
-        loadingPage("done");
+        loadingPage("done");//loading end
         return;
       }
       $.ajax({
@@ -97,13 +102,13 @@ function showCoinDetails() {
         },
         error: () => {
           alert("The coin name that you enter is not valid");
-          loadingPage("done");
+          loadingPage("done"); //loading end
         },
       });
     },
     error: () => {
       alert("The coin name that you enter is not valid");
-      loadingPage("done");
+      loadingPage("done"); //loading end
     }
   });
 }
@@ -139,24 +144,24 @@ function takeData(coin) {
                 </div>
             </div>`;
   $(".cards").append(cardCoin);
-  loadingPage("done");
+  loadingPage("done"); //loading end
 }
 
 // Bring Page From About.html
 $(".about").click(() => {
-  loadingPage();
+  loadingPage(); //loading start
   $("#htmlTemplate").empty();
   $("#htmlTemplate").load("../html/About.html");
-  loadingPage("done");
+  loadingPage("done"); //loading end
 });
 
 // Bring Page From LiveReports.html
 $(".liveReports").click(() => {
-  loadingPage();
+  loadingPage(); //loading start
   $("#htmlTemplate").empty();
   $("#htmlTemplate").load("../html/LiveReports.html");
-  createChart();
-  loadingPage("done");
+  createChart(); //function LiveReports
+  loadingPage("done"); //loading end
 });
 
 //checked more than 5 coins && show modal
@@ -201,7 +206,7 @@ function onSave() {
   }
 }
 
-//loading page
+//loading page function
 function loadingPage(done) {
   done
     ? $(".screen").fadeOut(2000)
