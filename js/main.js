@@ -64,7 +64,6 @@ function cards() {
     $(".cards").html(myCards);
   }
   loadingPage("done");
-  //End card of coins and the collapse button
 }
 
 // Search bar Start
@@ -79,7 +78,6 @@ $(".searchSub").click((e) => {
     loadingPage("done");
   }
 });
-
 
 function showCoinDetails() {
   const textCoin = $("#myInput").val();
@@ -143,7 +141,6 @@ function takeData(coin) {
   $(".cards").append(cardCoin);
   loadingPage("done");
 }
-// Search bar End
 
 // Bring Page From About.html
 $(".about").click(() => {
@@ -162,6 +159,7 @@ $(".liveReports").click(() => {
   loadingPage("done");
 });
 
+//checked more than 5 coins && show modal
 function toggleCoin(el, symbol) {
   if (el.checked === true && selectedCoins.length === 5) {
     el.checked = false;
@@ -203,11 +201,16 @@ function onSave() {
   }
 }
 
-function loadingPage(loadSlow) {
-  loadSlow
+//loading page
+function loadingPage(done) {
+  done
     ? $(".screen").fadeOut(2000)
     : $("body").append(
-      '<div class="screen"><div class="loadimg-screens"><img src="../image/load.gif" class="loadimg-screen" alt=""></div></div>'
+      `<div class="screen">
+          <div class="loadimg-screens">
+              <img src="../image/load.gif" class="loadimg-screen" alt="">
+          </div>
+      </div>`
     );
 }
 
