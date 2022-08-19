@@ -31,6 +31,7 @@ $(function () {
     },
   });
 });
+
 // card of coins and the collapse button
 function cards() {
   const card = myData;
@@ -67,9 +68,9 @@ function cards() {
                 </div>
                 </div>`;
     $(".cards").html(myCards);
-  }
+  };
   loadingPage("done"); //loading end
-}
+};
 
 // Search bar Start
 $(".searchSub").click((e) => {
@@ -111,7 +112,8 @@ function showCoinDetails() {
       loadingPage("done"); //loading end
     }
   });
-}
+};
+
 function takeData(coin) {
   let checked = "";
   if (selectedCoins.indexOf(coin.symbol) !== -1) {
@@ -145,7 +147,7 @@ function takeData(coin) {
             </div>`;
   $(".cards").append(cardCoin);
   loadingPage("done"); //loading end
-}
+};
 
 // Bring Page From About.html
 $(".about").click(() => {
@@ -188,23 +190,23 @@ function toggleCoin(el, symbol) {
     $(".modal-body").html(myCards);
     $("#myModal").modal("show");
     return;
-  }
+  };
 
   if (selectedCoins.includes(symbol)) {
     const index = selectedCoins.indexOf(symbol);
     selectedCoins.splice(index, 1);
   } else {
     selectedCoins.push(symbol);
-  }
+  };
   selectCoin(selectedCoins);
-}
+};
 function onSave() {
   if (lastCoinSelected && selectedCoins.length < 5) {
     selectedCoins.push(lastCoinSelected);
     lastCoinSelected = "";
     cards();
   }
-}
+};
 
 //loading page function
 function loadingPage(done) {
@@ -217,7 +219,7 @@ function loadingPage(done) {
           </div>
       </div>`
     );
-}
+};
 
 
 // LiveReports
@@ -285,4 +287,4 @@ function updateChart() {
       chart.render();
     },
   });
-}
+};
