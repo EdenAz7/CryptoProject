@@ -153,7 +153,7 @@ function takeData(coin) {
 $(".about").click(() => {
   loadingPage(); //loading start
   $("#htmlTemplate").empty();
-  $("#htmlTemplate").load("../html/About.html");
+  $("#htmlTemplate").load("../About.html");
   loadingPage("done"); //loading end
 });
 
@@ -161,7 +161,7 @@ $(".about").click(() => {
 $(".liveReports").click(() => {
   loadingPage(); //loading start
   $("#htmlTemplate").empty();
-  $("#htmlTemplate").load("../html/LiveReports.html");
+  $("#htmlTemplate").load("../LiveReports.html");
   createChart(); //function LiveReports
   loadingPage("done"); //loading end
 });
