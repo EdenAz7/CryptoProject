@@ -215,7 +215,7 @@ function loadingPage(done) {
     : $("body").append(
       `<div class="screen">
           <div class="loadimg-screens">
-              <img src="../image/load.gif" class="loadimg-screen" alt="">
+              <img src="image/load.gif" class="loadimg-screen" alt="">
           </div>
       </div>`
     );
