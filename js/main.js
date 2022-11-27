@@ -152,7 +152,7 @@ function takeData(coin) {
 // Bring Page From About.html
 $(".about").click(async function () {
   loadingPage(); //Start Load
-  const response = await fetch("about.html");
+  const response = await fetch("About.html");
   const html = await response.text();
   $("#htmlTemplate").html(html);
   loadingPage("done"); //Stop Load
@@ -160,7 +160,7 @@ $(".about").click(async function () {
 // Bring Page From LiveReports.html
 $(".liveReports").click(async function () {
   loadingPage(); //Start Load
-  const response = await fetch("livereport.html");
+  const response = await fetch("LiveReports.html");
   const html = await response.text();
   $("#htmlTemplate").html(html);
   createChart();
