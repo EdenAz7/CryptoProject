@@ -150,22 +150,22 @@ function takeData(coin) {
 };
 
 // Bring Page From About.html
-$(".about").click(() => {
-  loadingPage(); //loading start
-  $("#htmlTemplate").empty();
-  $("#htmlTemplate").load("../About.html");
-  loadingPage("done"); //loading end
+$(".about").click(async function () {
+  loadingPage(); //Start Load
+  const response = await fetch("about.html");
+  const html = await response.text();
+  $("#htmlTemplate").html(html);
+  loadingPage("done"); //Stop Load
 });
-
 // Bring Page From LiveReports.html
-$(".liveReports").click(() => {
-  loadingPage(); //loading start
-  $("#htmlTemplate").empty();
-  $("#htmlTemplate").load("../LiveReports.html");
-  createChart(); //function LiveReports
-  loadingPage("done"); //loading end
+$(".liveReports").click(async function () {
+  loadingPage(); //Start Load
+  const response = await fetch("livereport.html");
+  const html = await response.text();
+  $("#htmlTemplate").html(html);
+  createChart();
+  loadingPage("done"); //Stop Load
 });
-
 //checked more than 5 coins && show modal
 function toggleCoin(el, symbol) {
   if (el.checked === true && selectedCoins.length === 5) {
