@@ -20,7 +20,7 @@ $(function () {
   loadingPage(); //loading start
   // take coin's api
   $.ajax({
-    url: "https://api.coingecko.com/api/v3/coins",
+    url: "https://api.coingecko.com/api/v3/coins/",
     success: (card) => {
       myData = card;
       cards();
